@@ -1,21 +1,18 @@
 module Api::V1
   class MemesController < ApiController
-    before_action :set_meme, only: [:show, :update, :destroy]
-
-    # GET /memes
-    def index
+    def index # GET /memes
       @memes = Meme.all
 
       render json: @memes
     end
 
-    # GET /memes/1
-    def show
+    def show # GET /memes/1
+      @meme = Meme.find(params[:id])
+
       render json: @meme
     end
 
-    # POST /memes
-    def create
+    def create # POST /memes
       @meme = Meme.new(meme_params)
 
       if @meme.save
@@ -25,28 +22,8 @@ module Api::V1
       end
     end
 
-    # PATCH/PUT /memes/1
-    def update
-      if @meme.update(meme_params)
-        render json: @meme
-      else
-        render json: @meme.errors, status: :unprocessable_entity
-      end
-    end
-
-    # DELETE /memes/1
-    def destroy
-      @meme.destroy
-    end
-
     private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_meme
-      @meme = Meme.find(params[:id])
-    end
-
-    # Only allow a trusted parameter "white list" through.
-    def meme_params
+    def meme_params # Only allow a trusted parameter "white list" through.
       params.require(:meme).permit(:url)
     end
   end
