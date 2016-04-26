@@ -21,4 +21,12 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* To do
+- tests
+- serializer
+- auth
+- security
+
+refer: http://sourcey.com/building-the-prefect-rails-5-api-only-app/
+
+* Contributing
