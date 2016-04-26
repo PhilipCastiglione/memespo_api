@@ -1,7 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+puts "Purging all memes"
+Meme.destroy_all
+
+puts "Creating seed memes"
+Meme.create!(url: "http://www.newslinq.com/wp-content/uploads/2014/06/ex-girlfriend-meme-14.jpg")
+Meme.create!(url: "http://memesvault.com/wp-content/uploads/Funny-Workout-Meme-1.jpg")
+Meme.create!(url: "http://memesvault.com/wp-content/uploads/Funny-Meme-8.jpg")
+Meme.create!(url: "http://memesvault.com/wp-content/uploads/Funny-Meme-3.jpg")
+Meme.create!(url: "http://memesvault.com/wp-content/uploads/Funny-Meme-13.jpg")
+puts "#{Meme.count} memes created"
