@@ -22,6 +22,18 @@ module Api::V1
       end
     end
 
+    def upvote # POST /memes/upvote/1
+      @meme = Meme.find(params[:id])
+
+      render json: @meme.upvote
+    end
+
+    def downvote # POST /memes/downvote/1
+      @meme = Meme.find(params[:id])
+
+      render json: @meme.downvote
+    end
+
     private
     def meme_params # Only allow a trusted parameter "white list" through.
       params.require(:meme).permit(:url)
