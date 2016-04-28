@@ -27,6 +27,7 @@ module MemespoApi
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
+    # enable CORS for the specified methods
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
         origins '*'
