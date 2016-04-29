@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Meme, :type => :model do
   before :each do
-    @meme = FactoryGirl.build(:meme)
+    @meme = build(:meme)
   end
   
   it "has a valid factory" do
@@ -15,7 +15,7 @@ RSpec.describe Meme, :type => :model do
   end
 
   it "is invalid with a duplicate url" do
-    FactoryGirl.create(:meme, url: @meme.url)
+    create(:meme, url: @meme.url)
     @meme.valid?
     expect(@meme.errors[:url]).to include("has already been taken")
   end
