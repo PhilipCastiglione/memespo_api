@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Meme, :type => :model do
   before :each do
     @meme = build(:meme)
+    @meme_with_votes = build(:meme_with_votes)
   end
   
   it "has a valid factory" do
@@ -29,10 +30,7 @@ RSpec.describe Meme, :type => :model do
   end
 
   it "calculates and returns net votes as an integer" do
-    expect(@meme.votes).to eq 0
-
-    @meme.upvotes = 5
-    @meme.downvotes = 3
-    expect(@meme.votes).to eq 2
+    votes = @meme_with_votes.upvotes - @meme_with_votes.downvotes
+    expect(@meme_with_votes.votes).to eq votes
   end
 end
