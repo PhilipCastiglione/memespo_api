@@ -1,18 +1,21 @@
 module Api::V1
   class MemesController < ApiController
-    def index # GET /memes
+    # GET /memes
+    def index
       @memes = Meme.all
 
       render json: @memes
     end
 
-    def show # GET /memes/1
+    # GET /memes/:id
+    def show
       @meme = Meme.find(params[:id])
 
       render json: @meme
     end
 
-    def create # POST /memes
+    # POST /memes
+    def create
       @meme = Meme.new(meme_params)
 
       if @meme.save
@@ -22,20 +25,22 @@ module Api::V1
       end
     end
 
-    def upvote # POST /memes/upvote/1
+    # POST /memes/upvote/:id
+    def upvote
       @meme = Meme.find(params[:id])
 
       render json: @meme.upvote
     end
 
-    def downvote # POST /memes/downvote/1
+    # POST /memes/downvote/:id
+    def downvote
       @meme = Meme.find(params[:id])
 
       render json: @meme.downvote
     end
 
     private
-    def meme_params # Only allow a trusted parameter "white list" through.
+    def meme_params
       params.require(:meme).permit(:url)
     end
   end
