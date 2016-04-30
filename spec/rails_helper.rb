@@ -3,7 +3,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-# Add additional requires below this line. Rails is not loaded until this point!
+require 'rails-controller-testing'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -46,4 +46,9 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.include FactoryGirl::Syntax::Methods
+
+  # currently required workaround for rails-controller-testing in edge rails but existing rspec
+  config.include ::Rails::Controller::Testing::TestProcess, :type => :controller
+  config.include ::Rails::Controller::Testing::TemplateAssertions, :type => :controller
+  config.include ::Rails::Controller::Testing::Integration, :type => :controller
 end

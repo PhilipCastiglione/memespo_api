@@ -25,6 +25,8 @@ group :development, :test do
 
   # RSpec for specs
   gem 'rspec-rails', '~> 3.1.0'
+  # controller testing!
+  gem 'rails-controller-testing'
   # Factory girl for generating test data
   gem 'factory_girl_rails', '~> 4.4.1'
 end
