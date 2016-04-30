@@ -6,5 +6,9 @@ FactoryGirl.define do
       upvotes { Faker::Number.between(0, 2000) }
       downvotes { Faker::Number.between(0, 2000) }
     end
+
+    factory :invalid_meme do
+      url nil
+    end
   end
 end
