@@ -22,15 +22,27 @@ RSpec.describe Meme, :type => :model do
   end
 
   it "is created with 0 upvotes" do
-    expect(@meme.upvotes).to eq 0
+    expect(@meme.upvotes).to eq(0)
   end
 
   it "is created with 0 downvotes" do
-    expect(@meme.downvotes).to eq 0
+    expect(@meme.downvotes).to eq(0)
   end
 
   it "calculates and returns net votes as an integer" do
     votes = @meme_with_votes.upvotes - @meme_with_votes.downvotes
-    expect(@meme_with_votes.votes).to eq votes
+    expect(@meme_with_votes.votes).to eq(votes)
+  end
+
+  it "increments upvotes when requested" do
+    votes = @meme_with_votes.upvotes
+    @meme_with_votes.upvote
+    expect(@meme_with_votes.upvotes).to eq(votes + 1)
+  end
+
+  it "increments downvotes when requested" do
+    votes = @meme_with_votes.downvotes
+    @meme_with_votes.downvote
+    expect(@meme_with_votes.downvotes).to eq(votes + 1)
   end
 end
